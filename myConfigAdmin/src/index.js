@@ -1,5 +1,6 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
 const path = require('path');
+const { info } = require('console');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -9,8 +10,17 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    transparent: true,
+    frame: false,
+    width: 1280,
+    minWidth:1024,
+    height: 720,
+    resizable: true,
+    webPreferences:{
+      nodeIntegration: true,
+      enableRemoteModule: true
+    },
+    backgroundColor: '#00FFFFFF'
   });
 
   // and load the index.html of the app.
@@ -40,6 +50,32 @@ app.on('activate', () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
+});
+
+ipcMain.on('log-error', () => {
+  const options = {
+    type: 'info',
+    title: 'MyConfig - Erreur',
+    message: 'Erreur ! Veuillez rapporter ce bug au développeur de l\'application.'
+  }
+  dialog.showMessageBox(BrowserWindow.getFocusedWindow(), options);
+});
+
+ipcMain.on('openLogin', ()=>{
+    // and load the index.html of the app.
+    var loginPage = new BrowserWindow({
+        width: 500,
+        height: 300,
+        parent: BrowserWindow.getAllWindows()[0],
+        frame: false,
+        transparent: true,
+        webPreferences:{
+            nodeIntegration: true
+        }
+    })
+    loginPage.loadFile(path.join(__dirname, 'login.html'));
+    loginPage.webContents.openDevTools();
+    loginPage.show();
 });
 
 // In this file you can include the rest of your app's specific main process
