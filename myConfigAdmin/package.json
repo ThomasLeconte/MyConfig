@@ -45,6 +45,7 @@
     }
   },
   "dependencies": {
+    "electron-fetch": "^1.4.0",
     "electron-squirrel-startup": "^1.0.0",
     "mysql": "^2.18.1",
     "puppeteer": "^5.2.1"

@@ -15,9 +15,13 @@ minimizeBtn.onclick = e => {
     remote.getCurrentWindow().minimize();
 };
 
+const registerBtn = document.getElementById('registerBtn');
+
 const loginBtn = document.getElementById('loginBtn')
 loginBtn.onclick = e => {
-    ipcRenderer.send('openLogin');
+    if(loginBtn.innerText == "Log in"){
+        ipcRenderer.send('openLogin');
+    }
 };
 
 
@@ -58,7 +62,7 @@ async function scrapeProducts(url){
         return data;
     });
     console.log(products);
-    //var db = new Database("localhost", "root", "", "myconfig");
+    var db = new Database();
     //db.insertIntoDatabase(products);
 }
 
@@ -67,3 +71,9 @@ window.onload = async function(){
     //appel de la fonction pour scraper
     scrapeProducts(url);
 }
+
+ipcRenderer.on('connected', (event, args) => {
+    console.log(args);
+    loginBtn.innerText = args["username"];
+    registerBtn.setAttribute("style", "visibility: hidden;");
+})

@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, ipcRenderer } = require('electron');
 const path = require('path');
 const { info } = require('console');
 
@@ -15,7 +15,7 @@ const createWindow = () => {
     width: 1280,
     minWidth:1024,
     height: 720,
-    resizable: true,
+    resizable: false,
     webPreferences:{
       nodeIntegration: true,
       enableRemoteModule: true
@@ -70,13 +70,23 @@ ipcMain.on('openLogin', ()=>{
         frame: false,
         transparent: true,
         webPreferences:{
-            nodeIntegration: true
+            nodeIntegration: true,
+            enableRemoteModule: true
         }
-    })
+    });
     loginPage.loadFile(path.join(__dirname, 'login.html'));
     loginPage.webContents.openDevTools();
     loginPage.show();
 });
+
+/*ipcMain.on('connected', function(event, data) {
+  console.log(data);
+  console.log(BrowserWindow.getAllWindows());
+
+  //SEND TO MAIN PAGE ACCOUNT CONNECTED
+  //It's 1 because login became [0] because of focusing him.
+  BrowserWindow.getAllWindows()[1].webContents.send('coucou');
+});*/
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.

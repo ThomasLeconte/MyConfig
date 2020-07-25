@@ -1,13 +1,14 @@
 const mysql = require('mysql');
+const { app, BrowserWindow, ipcRenderer, dialog } = require('electron');
 
 class Database{
 
-    constructor(_host, _user, _password, _database){
+    constructor(){
         this.bd = mysql.createConnection({
-            host: _host,
-            user: _user,
-            password: _password,
-            database: _database
+            host: "localhost",
+            user: "root",
+            password: "",
+            database: "myconfig"
         });
     }
 
@@ -18,7 +19,6 @@ class Database{
             }else{
                 console.log("Connected!");
             }
-            
         });
 
         for(const product of products){
@@ -29,6 +29,7 @@ class Database{
             console.log("1 record inserted");  
             });
         }
+        this.bd.end();
     }
 }
 
