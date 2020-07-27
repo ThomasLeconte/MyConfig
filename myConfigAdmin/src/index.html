@@ -20,8 +20,8 @@
   <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
-          <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+        <a class="navbar-item" href="index.html">
+          <img src="img/banner.png" width="120" height="35">
         </a>
     
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -33,12 +33,12 @@
     
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item">
+          <a class="navbar-item" href="index.html">
             Home
           </a>
     
           <a class="navbar-item">
-            Documentation
+            Components
           </a>
     
           <div class="navbar-item has-dropdown is-hoverable">
@@ -48,7 +48,7 @@
     
             <div class="navbar-dropdown">
               <a class="navbar-item">
-                About
+                Members
               </a>
               <a class="navbar-item">
                 Jobs
@@ -84,6 +84,88 @@
         </div>
       </div>
     </nav>
+
+    <div id="container">
+
+      <div id="adminPanel">
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">
+              Components statistics
+            </p>
+          </header>
+          <div class="card-content">
+            <div class="content">
+              <center>
+                <div class="columns is-mobile">
+                  <div class="column">
+                    <article class="message is-primary">
+                      <div class="message-header">
+                        <p>Processors</p>
+                      </div>
+                      <div class="message-body">
+                        In database : <span id="component-processors"></span>
+                      </div>
+                    </article>
+                  </div>
+  
+                  <div class="column">
+                    <article class="message is-primary">
+                      <div class="message-header">
+                        <p>RAM</p>
+                      </div>
+                      <div class="message-body">
+                        In database : <span id="component-RAM"></span>
+                      </div>
+                    </article>
+                  </div>
+  
+                  <div class="column">
+                    <article class="message is-primary">
+                      <div class="message-header">
+                        <p>HDD & SSD</p>
+                      </div>
+                      <div class="message-body">
+                        In database : <span id="component-storage"></span>
+                      </div>
+                    </article>
+                  </div>
+  
+                  <div class="column">
+                    <article class="message is-primary">
+                      <div class="message-header">
+                        <p>Graphic cards</p>
+                      </div>
+                      <div class="message-body">
+                        In database : <span id="component-graphic-cards"></span>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+              </center>
+            </div>
+          </div>
+        </div>
+  
+        <article class="message is-primary" style="width: 12em;margin-top: 1em;">
+          <div class="message-body">
+            Feed database : <br>
+            <button id="fetchItems" class="button is-primary" onclick="scrapeProducts()">DO IT !</button><br>
+            <span id="itemCounter"></span>
+          </div>
+        </article>
+      </div>
+
+      <div id="notConnected">
+        <center>
+          <h3 style="color:white;font-size: 1em;text-transform: uppercase;letter-spacing: 2px;">Please login yourself for access to admin panel...</h3><br>
+          <img src="https://media.giphy.com/media/L1QTSCW1S7qutb2XCD/giphy.gif" style="border-radius: 5px;box-shadow: 3px 3px 3px black;"/>
+        </center>
+      </div>
+
+    </div>
+
+
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {

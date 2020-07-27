@@ -20,7 +20,8 @@ const createWindow = () => {
       nodeIntegration: true,
       enableRemoteModule: true
     },
-    backgroundColor: '#00FFFFFF'
+    backgroundColor: '#00FFFFFF',
+    icon: "src/img/icon.png"
   });
 
   // and load the index.html of the app.
@@ -75,7 +76,7 @@ ipcMain.on('openLogin', ()=>{
         }
     });
     loginPage.loadFile(path.join(__dirname, 'login.html'));
-    loginPage.webContents.openDevTools();
+    //loginPage.webContents.openDevTools();
     loginPage.show();
 });
 
