@@ -5,7 +5,7 @@
     <title>MyConfig - Admin</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="bulma-0.6.2/css/bulma.css">
-    <script defer src="mainPage.js"></script>
+    <script defer src="components.js"></script>
     <script src="https://kit.fontawesome.com/50db597567.js" crossorigin="anonymous"></script>
     <style>
       html{
@@ -37,7 +37,7 @@
             Home
           </a>
     
-          <a class="navbar-item" href="components.html">
+          <a class="navbar-item">
             Components
           </a>
     
@@ -86,82 +86,28 @@
     </nav>
 
     <div id="container">
-
-      <div id="adminPanel">
-        <div class="card">
-          <header class="card-header">
-            <p class="card-header-title">
-              Components statistics
-            </p>
-          </header>
-          <div class="card-content">
-            <div class="content">
-              <center>
-                <div class="columns is-mobile">
-                  <div class="column">
-                    <article class="message is-primary">
-                      <div class="message-header">
-                        <p>Processors</p>
-                      </div>
-                      <div class="message-body">
-                        In database : <span id="component-processors"></span>
-                      </div>
-                    </article>
-                  </div>
-  
-                  <div class="column">
-                    <article class="message is-primary">
-                      <div class="message-header">
-                        <p>RAM</p>
-                      </div>
-                      <div class="message-body">
-                        In database : <span id="component-RAM"></span>
-                      </div>
-                    </article>
-                  </div>
-  
-                  <div class="column">
-                    <article class="message is-primary">
-                      <div class="message-header">
-                        <p>HDD & SSD</p>
-                      </div>
-                      <div class="message-body">
-                        In database : <span id="component-storage"></span>
-                      </div>
-                    </article>
-                  </div>
-  
-                  <div class="column">
-                    <article class="message is-primary">
-                      <div class="message-header">
-                        <p>Graphic cards</p>
-                      </div>
-                      <div class="message-body">
-                        In database : <span id="component-graphic-cards"></span>
-                      </div>
-                    </article>
-                  </div>
-                </div>
-              </center>
+        <div id="adminPanel">
+            <h3 style="color: white;font-weight: bold;letter-spacing: 2px;text-transform: uppercase;">Processors :</h3>
+            <div class="table-container">
+              <table class="table">
+                <thead>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Link</th>
+                  <th>Price</th>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+              </table>
             </div>
-          </div>
         </div>
-  
-        <article class="message is-primary" style="width: 12em;margin-top: 1em;">
-          <div class="message-body">
-            Feed database : <br>
-            <button id="fetchItems" class="button is-primary" onclick="scrapeProducts()">DO IT !</button><br>
-            <span id="itemCounter"></span>
-          </div>
-        </article>
-      </div>
 
-      <div id="notConnected">
-        <center>
-          <h3 style="color:white;font-size: 1em;text-transform: uppercase;letter-spacing: 2px;">Please login yourself for access to admin panel...</h3><br>
-          <img src="https://media.giphy.com/media/L1QTSCW1S7qutb2XCD/giphy.gif" style="border-radius: 5px;box-shadow: 3px 3px 3px black;"/>
-        </center>
-      </div>
+        <div id="notConnected">
+            <center>
+            <h3 style="color:white;text-transform: uppercase;letter-spacing: 2px;">Please login yourself for access to admin panel...</h3><br>
+            <img src="https://media.giphy.com/media/L1QTSCW1S7qutb2XCD/giphy.gif" style="border-radius: 5px;box-shadow: 3px 3px 3px black;"/>
+            </center>
+        </div>
 
     </div>
 

@@ -65,8 +65,9 @@ ipcMain.on('log-error', () => {
 ipcMain.on('openLogin', ()=>{
     // and load the index.html of the app.
     var loginPage = new BrowserWindow({
-        width: 500,
-        height: 300,
+        width: 1280,
+        minWidth:1024,
+        height: 720,
         parent: BrowserWindow.getAllWindows()[0],
         frame: false,
         transparent: true,
@@ -76,7 +77,7 @@ ipcMain.on('openLogin', ()=>{
         }
     });
     loginPage.loadFile(path.join(__dirname, 'login.html'));
-    //loginPage.webContents.openDevTools();
+    loginPage.webContents.openDevTools();
     loginPage.show();
 });
 

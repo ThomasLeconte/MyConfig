@@ -1,4 +1,4 @@
-const {desktopCapturer, remote, BrowserWindow, app, ipcRenderer } = require('electron');
+const {desktopCapturer, remote, BrowserWindow, app, ipcRenderer, session } = require('electron');
 const {Menu, dialog, Notification} = remote;
 const path = require('path');
 const puppeteer = require('puppeteer');
@@ -32,12 +32,22 @@ fetchBtn.onclick = e => {
 const itemCounter = document.getElementById('itemCounter');
 
 window.onload = async function(){
-    getGlobalStats();
-    document.getElementById('adminPanel').style.display = "none";
+    
+    if(sessionStorage.getItem('user_id')){
+        document.getElementById('adminPanel').style.display = "block";
+        document.getElementById('notConnected').style.display = "none";
+        getGlobalStats();
+    }else{
+        document.getElementById('adminPanel').style.display = "none";
+        //generateTable();
+        getAllProducts('processors');
+    }
 }
 
 ipcRenderer.on('connected', (event, args) => {
     console.log(args);
+    sessionStorage.setItem('user_id', args['id']);
+    sessionStorage.setItem('user_name', args['username']);
     loginBtn.innerText = args["username"];
     registerBtn.setAttribute("style", "visibility: hidden;");
     document.getElementById('adminPanel').style.display = "block";
@@ -62,8 +72,8 @@ async function getAllProducts(type){
             }
             for(url of urls){
                 const productsOfUrl = await scrapeProducts(url);
-                db = new Database();
-                db.insertIntoDatabase(productsOfUrl);
+                //db = new Database();
+                //db.insertIntoDatabase(productsOfUrl);
                 products.push(productsOfUrl);
             }
             for(var p of products){
@@ -73,7 +83,7 @@ async function getAllProducts(type){
             itemCounter.innerText = "Items fetched : "+counter;
         break;
     }
-    remote.getCurrentWindow().reload();
+    //remote.getCurrentWindow().reload();
 }
 
 async function scrapeProducts(url){
@@ -89,11 +99,24 @@ async function scrapeProducts(url){
         //Tout les selecteurs CSS
         const productName = 'div > div:nth-child(1) > div:nth-child(1) > h3:nth-child(1)';
         const productPrice = 'div > div:nth-child(4) > div:nth-child(1) > div:nth-child(1)';
+        const productDesc = 'div > div:nth-child(1) > div:nth-child(1) > p:nth-child(2)';
+        const productLink = 'div > div:nth-child(1) > div:nth-child(1) > h3:nth-child(1) > a:nth-child(1)';
+        const productImg = 'div > a:nth-child(1) > img:nth-child(1)';
 
         //constante qui récupère la valeur de l'élement ciblé par le selecteur CSS
         const grabFromRow = (row, classname)=>row
         .querySelector(classname)
         .innerText
+        .trim();
+
+        const grabLinkFromRow = (row, classname)=>row
+        .querySelector(classname)
+        .getAttribute('href')
+        .trim();
+
+        const grabImgFromRow = (row, classname)=>row
+        .querySelector(classname)
+        .getAttribute('src')
         .trim();
 
         //selecteur CSS d'un produit
@@ -109,7 +132,10 @@ async function scrapeProducts(url){
         for(const li of productRows){
             data.push({
                 name: grabFromRow(li, productName),
-                price: grabFromRow(li, productPrice)
+                desc: grabFromRow(li, productDesc),
+                price: grabFromRow(li, productPrice),
+                link: 'https://www.ldlc.com'+grabLinkFromRow(li, productLink),
+                image: grabImgFromRow(li, productImg)
             })
             cpt = cpt+1;
         }
@@ -152,13 +178,13 @@ async function getNumberOfPages(url){
 
 function getGlobalStats() {
     var API_TOKEN = 'iqB4SjZ8ozkYLuK6eBRh4oMYsfxhm4I2';
-    const url = 'http://localhost/MyConfigApi/?token='+API_TOKEN+'&components=1/2/3/4';
+    const url = 'http://127.0.0.1:8000/components/1&2&3&4';
     const result = JSON.parse(fetchData(url));
 
-    document.getElementById('component-processors').innerText = result[0]['counter'];
-    document.getElementById('component-RAM').innerText = result[1]['counter'];
-    document.getElementById('component-storage').innerText = result[2]['counter'];
-    document.getElementById('component-graphic-cards').innerText = result[3]['counter'];
+    document.getElementById('component-processors').innerText = result[0];
+    document.getElementById('component-RAM').innerText = result[1];
+    document.getElementById('component-storage').innerText = result[2];
+    document.getElementById('component-graphic-cards').innerText = result[3];
 }
 
 function fetchData(url){

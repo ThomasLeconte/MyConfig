@@ -22,7 +22,8 @@ class Database{
         });
 
         for(const product of products){
-            var sql = "INSERT INTO component (comp_id, comp_info, comp_desc, comp_price, comp_type) VALUES (NULL, 'Ajeet Kumar', '"+product.name+"', '"+product.price+"', 1)";
+            var infos = '{"title": "'+product.name+'","link":"'+product.link+'","img":"'+product.image+'"}';
+            var sql = "INSERT INTO api_component (comp_id, comp_info, comp_desc, comp_price, comp_type) VALUES (NULL, '"+infos+"', '"+product.desc+"', '"+product.price+"', 1)";
             console.log(sql); 
             this.bd.query(sql, function (err, result) {  
             if (err) throw err;  
