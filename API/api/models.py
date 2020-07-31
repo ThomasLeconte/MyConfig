@@ -23,6 +23,16 @@ class component(models.Model):
         return self.comp_price.replace('\xa0','')
     def getType(self):
         return self.comp_type
+    def returnList(self):
+        return {
+            "id": self.comp_id,
+            "title": json.loads(self.comp_info)['title'],
+            "desc": self.comp_desc,
+            "link": json.loads(self.comp_info)['link'],
+            "img": json.loads(self.comp_info)['img'],
+            "price": self.comp_price.replace('\xa0',''),
+            "type": self.comp_type
+        }
 
 class user(models.Model):
     models.fields = ('user_id')

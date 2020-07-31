@@ -27,6 +27,9 @@ loginBtn.onclick = e => {
 const fetchBtn = document.getElementById('fetchItems')
 fetchBtn.onclick = e => {
     getAllProducts('processors');
+    getAllProducts('ram');
+    getAllProducts('storage');
+    getAllProducts('graphic-cards');
 };
 
 const itemCounter = document.getElementById('itemCounter');
@@ -39,8 +42,6 @@ window.onload = async function(){
         getGlobalStats();
     }else{
         document.getElementById('adminPanel').style.display = "none";
-        //generateTable();
-        getAllProducts('processors');
     }
 }
 
@@ -61,19 +62,80 @@ ipcRenderer.on('connected', (event, args) => {
 
 async function getAllProducts(type){
     const products = [];
+    let urls = [];
+    let allUrls = [];
     switch(type){
         case "processors":
-
-            const urls = ['https://www.ldlc.com/informatique/pieces-informatique/processeur/c4300/?sort=1'];
-            const allUrls = await getNumberOfPages(urls[0]);
+            urls = ['https://www.ldlc.com/informatique/pieces-informatique/processeur/c4300/?sort=1'];
+            allUrls = await getNumberOfPages(urls[0]);
             var counter = 0;
             for(const url of allUrls){
                 urls.push('https://www.ldlc.com'+url);
             }
             for(url of urls){
                 const productsOfUrl = await scrapeProducts(url);
-                //db = new Database();
-                //db.insertIntoDatabase(productsOfUrl);
+                db = new Database();
+                db.insertIntoDatabase(productsOfUrl, 1);
+                products.push(productsOfUrl);
+            }
+            for(var p of products){
+                counter = counter + p.length;
+            }
+            console.log(products);
+            itemCounter.innerText = "Items fetched : "+counter;
+        break;
+
+        case "ram":
+            urls = ['https://www.ldlc.com/informatique/pieces-informatique/memoire-pc/c4703/?sort=1'];
+            allUrls = await getNumberOfPages(urls[0]);
+            var counter = 0;
+            for(const url of allUrls){
+                urls.push('https://www.ldlc.com'+url);
+            }
+            for(url of urls){
+                const productsOfUrl = await scrapeProducts(url);
+                db = new Database();
+                db.insertIntoDatabase(productsOfUrl, 2);
+                products.push(productsOfUrl);
+            }
+            for(var p of products){
+                counter = counter + p.length;
+            }
+            console.log(products);
+            itemCounter.innerText = "Items fetched : "+counter;
+        break;
+
+        case "storage":
+            urls = ['https://www.ldlc.com/informatique/pieces-informatique/disque-dur-interne/c4697/?sort=1v'];
+            allUrls = await getNumberOfPages(urls[0]);
+            var counter = 0;
+            for(const url of allUrls){
+                urls.push('https://www.ldlc.com'+url);
+            }
+            for(url of urls){
+                const productsOfUrl = await scrapeProducts(url);
+                db = new Database();
+                db.insertIntoDatabase(productsOfUrl, 3);
+                products.push(productsOfUrl);
+            }
+            for(var p of products){
+                counter = counter + p.length;
+            }
+            console.log(products);
+            itemCounter.innerText = "Items fetched : "+counter;
+        break;
+
+        case "graphic-cards":
+            urls = ['https://www.ldlc.com/informatique/pieces-informatique/carte-graphique-interne/c4684/?sort=1']
+            allUrls = await getNumberOfPages(urls[0]);
+            var counter = 0;
+            for(const url of allUrls){
+                urls.push('https://www.ldlc.com'+url);
+            }
+            for(url of urls){
+                const productsOfUrl = await scrapeProducts(url);
+                db = new Database();
+                db.insertIntoDatabase(productsOfUrl, 4);
                 products.push(productsOfUrl);
             }
             for(var p of products){

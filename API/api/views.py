@@ -46,13 +46,7 @@ def getProductsByCategory(request, _category):
     response = []
 
     for i in data:
-        this = []
-        this.append(i.__str__())
-        this.append(i.getDesc())
-        this.append(i.getLink())
-        this.append(i.getImageLink())
-        this.append(i.getPrice())
-        this.append(i.getType())
+        this = i.returnList()
         response.append(this)
 
     return JsonResponse(

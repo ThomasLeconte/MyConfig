@@ -9,11 +9,26 @@
     <script src="https://kit.fontawesome.com/50db597567.js" crossorigin="anonymous"></script>
     <style>
       html{
-        overflow: hidden;
         background-color: #353b48;
         border-radius: 5px;
         border: 3px solid white;
-        height: 720px
+        min-height: 720px;
+        overflow: hidden;
+      }
+      #adminPanel{
+        height: 600px;
+        overflow-y: scroll;
+        width: auto;
+        scrollbar-color: light;
+        padding-right: 10px;
+      }
+      .table-container{
+        border-radius: 3px;
+        background-color: white;
+        height: 250px;
+        overflow-y: scroll;
+        width: auto;
+        scrollbar-color: light;
       }
     </style>
   </head>
@@ -96,7 +111,49 @@
                   <th>Link</th>
                   <th>Price</th>
                 </thead>
-                <tbody id="tbody">
+                <tbody id="tbody" class="processors">
+                </tbody>
+              </table>
+            </div>
+
+            <br><h3 style="color: white;font-weight: bold;letter-spacing: 2px;text-transform: uppercase;">RAM :</h3>
+            <div class="table-container">
+              <table class="table">
+                <thead>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Link</th>
+                  <th>Price</th>
+                </thead>
+                <tbody id="tbody" class="ram">
+                </tbody>
+              </table>
+            </div>
+
+            <br><h3 style="color: white;font-weight: bold;letter-spacing: 2px;text-transform: uppercase;">Storage :</h3>
+            <div class="table-container">
+              <table class="table">
+                <thead>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Link</th>
+                  <th>Price</th>
+                </thead>
+                <tbody id="tbody" class="storage">
+                </tbody>
+              </table>
+            </div>
+
+            <br><h3 style="color: white;font-weight: bold;letter-spacing: 2px;text-transform: uppercase;">Graphic cards :</h3>
+            <div class="table-container">
+              <table class="table">
+                <thead>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Link</th>
+                  <th>Price</th>
+                </thead>
+                <tbody id="tbody" class="graphic-cards">
                 </tbody>
               </table>
             </div>

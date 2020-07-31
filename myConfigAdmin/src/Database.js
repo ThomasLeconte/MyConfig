@@ -12,7 +12,7 @@ class Database{
         });
     }
 
-    insertIntoDatabase(products){
+    insertIntoDatabase(products, productsType){
         this.bd.connect(function(err) {  
             if (err){
                 throw err; 
@@ -23,7 +23,7 @@ class Database{
 
         for(const product of products){
             var infos = '{"title": "'+product.name+'","link":"'+product.link+'","img":"'+product.image+'"}';
-            var sql = "INSERT INTO api_component (comp_id, comp_info, comp_desc, comp_price, comp_type) VALUES (NULL, '"+infos+"', '"+product.desc+"', '"+product.price+"', 1)";
+            var sql = "INSERT INTO api_component (comp_id, comp_info, comp_desc, comp_price, comp_type) VALUES (NULL, '"+infos+"', '"+product.desc+"', '"+product.price+"', "+productsType+")";
             console.log(sql); 
             this.bd.query(sql, function (err, result) {  
             if (err) throw err;  
