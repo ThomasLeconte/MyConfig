@@ -5,7 +5,7 @@
     <title>MyConfig - Admin</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="bulma-0.6.2/css/bulma.css">
-    <script defer src="mainPage.js"></script>
+    <script defer src="userconfig.js"></script>
     <script src="https://kit.fontawesome.com/50db597567.js" crossorigin="anonymous"></script>
     <style>
       html{
@@ -15,8 +15,16 @@
         border: 3px solid white;
         height: 720px
       }
+      .container{
+          overflow-y: scroll;
+      }
+
       .card{
           border-radius: 3px;
+      }
+
+      .table-container{
+          margin-top: 10px;
       }
     </style>
   </head>
@@ -39,15 +47,15 @@
           <a class="navbar-item" href="index.html">
             <i class="fas fa-home" style="margin-right: 3px;"></i> Home
           </a>
+    
+          <a class="navbar-item" href="components.html">
+            <i class="fas fa-microchip" style="margin-right: 3px;"></i>Components
+          </a>
 
           <a class="navbar-item" href="userconfig.html">
             <i class="fas fa-user" style="margin-right: 3px;"></i>Your config
           </a>
-
-          <a class="navbar-item" href="userconfig.html">
-            <i class="fas fa-microchip" style="margin-right: 3px;"></i>Components
-          </a>
-
+    
         </div>
     
         <div class="navbar-end">
@@ -66,7 +74,7 @@
     <div id="container">
       <div class="columns">
         <div class="column is-two-thirds">
-          <h3>Choose your components : </h3>
+          <h3>Your configuration : </h3>
           <div class="card">
             <header class="card-header">
               <p class="card-header-title">
@@ -80,7 +88,7 @@
             </header>
             <div class="card-content">
               <div class="content">
-                <p class="chooseItem" id="chooseProcessor"><i class="far fa-plus-square"></i> Choose one ...</p>
+                <p class="userconfig-item" id="userconfig-proc"></p>
               </div>
             </div>
           </div>
@@ -97,14 +105,14 @@
             </header>
             <div class="card-content">
               <div class="content">
-                <p class="chooseItem" id="chooseProcessor"><i class="far fa-plus-square"></i> Choose one ...</p>
+                <p class="userconfig-item" id="userconfig-ram"></p>
               </div>
             </div>
           </div>
           <div class="card">
             <header class="card-header">
               <p class="card-header-title">
-                Graphic card : 
+                Graphic cards : 
               </p>
               <a href="#" class="card-header-icon" aria-label="more options">
                 <span class="icon">
@@ -114,7 +122,7 @@
             </header>
             <div class="card-content">
               <div class="content">
-                <p class="chooseItem" id="chooseProcessor"><i class="far fa-plus-square"></i> Choose one ...</p>
+                <p class="userconfig-item" id="userconfig-graphic-cards"></p>
               </div>
             </div>
           </div>
@@ -131,51 +139,47 @@
             </header>
             <div class="card-content">
               <div class="content">
-                <p class="chooseItem" id="chooseProcessor"><i class="far fa-plus-square"></i> Choose one ...</p>
+                <p class="userconfig-item" id="userconfig-storage"></p>
               </div>
             </div>
           </div>
         </div>
-
-
         <div class="column">
-          <div class="card">
-            <header class="card-header">
-              <p class="card-header-title">
-                Components
-              </p>
-              <a href="#" class="card-header-icon" aria-label="more options">
-                <span class="icon">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </a>
-            </header>
-            <div class="card-content">
-              <div class="content">
-                <div class="table-container">
-                  <table class="table">
-                    <tbody>
-                      <tr>
-                        <td>test</td>
-                      </tr>
-                      <tr>
-                        <td>test</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div class="totalPrice" style="display: flex;flex-direction: row;">
-                    <h4>Total : <span id="Price">0€</span></h4>
-                    
+            <div class="card">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Estimation of your config
+                  </p>
+                  <a href="#" class="card-header-icon" aria-label="more options">
+                    <span class="icon">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                    <p>Type of your computer :</p>
+                    <input type="checkbox" id="laptop"/><label> Laptop computer</label><br>
+                    <input type="checkbox" id="desktop"/><label> Desktop computer</label>
+                    <div class="table-container">
+                      <table class="table">
+                        <tbody id="userconfig-resume">
+
+                        </tbody>
+                      </table>
+                      <div class="totalPrice" style="display: flex;flex-direction: row;">
+                        <h4>Total : <span id="globalPrice">0€</span></h4>
+                        
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
+                <footer class="card-footer">
+                  <a href="#" class="card-footer-item">Save</a>
+                  <a href="#" class="card-footer-item">Edit</a>
+                  <a href="#" class="card-footer-item">Delete</a>
+                </footer>
             </div>
-            <footer class="card-footer">
-              <a href="#" class="card-footer-item">Save</a>
-              <a href="#" class="card-footer-item">Edit</a>
-              <a href="#" class="card-footer-item">Delete</a>
-            </footer>
-          </div>
         </div>
       </div>
     </div>
