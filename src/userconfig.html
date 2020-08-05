@@ -10,17 +10,11 @@
     <style>
       html{
         overflow: hidden;
-        background-color: #353b48;
-        border-radius: 5px;
-        border: 3px solid white;
-        height: 720px
+        background: #1e2334;  /* fallback for old browsers */
+        height: 720px;
       }
       .container{
           overflow-y: scroll;
-      }
-
-      .card{
-          border-radius: 3px;
       }
 
       .table-container{
@@ -48,7 +42,7 @@
             <i class="fas fa-home" style="margin-right: 3px;"></i> Home
           </a>
     
-          <a class="navbar-item" href="components.html">
+          <a class="navbar-item" href="userconfig.html">
             <i class="fas fa-microchip" style="margin-right: 3px;"></i>Components
           </a>
 
@@ -73,112 +67,120 @@
 
     <div id="container">
       <div class="columns">
-        <div class="column is-two-thirds">
-          <h3>Your configuration : </h3>
-          <div class="card">
-            <header class="card-header">
-              <p class="card-header-title">
-                Processor : 
-              </p>
-              <a href="#" class="card-header-icon" aria-label="more options">
-                <span class="icon">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </a>
-            </header>
-            <div class="card-content">
-              <div class="content">
-                <p class="userconfig-item" id="userconfig-proc"></p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <header class="card-header">
-              <p class="card-header-title">
-                RAM : 
-              </p>
-              <a href="#" class="card-header-icon" aria-label="more options">
-                <span class="icon">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </a>
-            </header>
-            <div class="card-content">
-              <div class="content">
-                <p class="userconfig-item" id="userconfig-ram"></p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <header class="card-header">
-              <p class="card-header-title">
-                Graphic cards : 
-              </p>
-              <a href="#" class="card-header-icon" aria-label="more options">
-                <span class="icon">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </a>
-            </header>
-            <div class="card-content">
-              <div class="content">
-                <p class="userconfig-item" id="userconfig-graphic-cards"></p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <header class="card-header">
-              <p class="card-header-title">
-                Storage : 
-              </p>
-              <a href="#" class="card-header-icon" aria-label="more options">
-                <span class="icon">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </a>
-            </header>
-            <div class="card-content">
-              <div class="content">
-                <p class="userconfig-item" id="userconfig-storage"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="column">
-            <div class="card">
-                <header class="card-header">
-                  <p class="card-header-title">
-                    Estimation of your config
-                  </p>
-                  <a href="#" class="card-header-icon" aria-label="more options">
-                    <span class="icon">
-                      <i class="fas fa-angle-down" aria-hidden="true"></i>
-                    </span>
-                  </a>
-                </header>
-                <div class="card-content">
-                  <div class="content">
-                    <p>Type of your computer :</p>
-                    <input type="checkbox" id="laptop"/><label> Laptop computer</label><br>
-                    <input type="checkbox" id="desktop"/><label> Desktop computer</label>
-                    <div class="table-container">
-                      <table class="table">
-                        <tbody id="userconfig-resume">
-
-                        </tbody>
-                      </table>
-                      <div class="totalPrice" style="display: flex;flex-direction: row;">
-                        <h4>Total : <span id="globalPrice">0€</span></h4>
-                        
-                      </div>
+        <div class="column" style="margin-right: 1em;">
+          <h3 style="margin-bottom: 5px;">Your configuration : </h3>
+            <div class="columns">
+              <div class="column is-two-thirds" style="margin-right: 1.5em">
+                <div class="card" id="userconfig">
+                  <header class="card-header">
+                    <p class="card-header-title">
+                      <i class="fas fa-microchip" style="margin-right: 3px;"></i> Processor : 
+                    </p>
+                    <a href="#" class="card-header-icon" aria-label="more options">
+                      <span class="icon">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                    </a>
+                  </header>
+                  <div class="card-content">
+                    <div class="content">
+                      <p class="userconfig-item" id="userconfig-proc"></p>
                     </div>
                   </div>
                 </div>
-                <footer class="card-footer">
-                  <a href="#" class="card-footer-item">Save</a>
-                  <a href="#" class="card-footer-item">Edit</a>
-                  <a href="#" class="card-footer-item">Delete</a>
-                </footer>
+                <div class="card" id="userconfig">
+                    <header class="card-header">
+                      <p class="card-header-title">
+                        <i class="fas fa-drafting-compass" style="margin-right: 3px;"></i> Graphic cards : 
+                      </p>
+                      <a href="#" class="card-header-icon" aria-label="more options">
+                        <span class="icon">
+                          <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                      </a>
+                    </header>
+                    <div class="card-content">
+                      <div class="content">
+                        <p class="userconfig-item" id="userconfig-graphic-cards"></p>
+                      </div>
+                    </div>
+                </div>
+                <div class="card" id="userconfig">
+                    <header class="card-header">
+                      <p class="card-header-title">
+                        <i class="fas fa-memory" style="margin-right: 3px;"></i> RAM : 
+                      </p>
+                      <a href="#" class="card-header-icon" aria-label="more options">
+                        <span class="icon">
+                          <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                      </a>
+                    </header>
+                    <div class="card-content">
+                      <div class="content">
+                        <p class="userconfig-item" id="userconfig-ram"></p>
+                      </div>
+                    </div>
+                </div>
+                <div class="card" id="userconfig">
+                    <header class="card-header">
+                      <p class="card-header-title">
+                        <i class="fas fa-hdd" style="margin-right: 3px;"></i> Storage : 
+                      </p>
+                      <a href="#" class="card-header-icon" aria-label="more options">
+                        <span class="icon">
+                          <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                      </a>
+                    </header>
+                    <div class="card-content">
+                      <div class="content">
+                        <p class="userconfig-item" id="userconfig-storage"></p>
+                      </div>
+                    </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="card">
+                  <header class="card-header">
+                    <p class="card-header-title">
+                      Estimation of your config
+                    </p>
+                    <a href="#" class="card-header-icon" aria-label="more options">
+                      <span class="icon">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                    </a>
+                  </header>
+                  <div class="card-content">
+                    <div class="content">
+                      <p>Type of your computer :</p>
+                      <div class="select is-primary">
+                        <select name="configType">
+                          <option selected value="Laptop">Laptop computer</option>
+                          <option value="Desktop">Desktop computer</option>
+                        </select>
+                      </div>
+                      <div class="table-container">
+                        <table class="table" style="background-color: transparent;">
+                          <tbody id="userconfig-resume">
+  
+                          </tbody>
+                        </table>
+                        <div class="totalPrice" style="display: flex;flex-direction: row;">
+                          <h4>Total : <span id="globalPrice">0€</span></h4>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <footer class="card-footer">
+                    <a href="#" class="card-footer-item">Save</a>
+                    <a href="#" class="card-footer-item">Edit</a>
+                    <a href="#" class="card-footer-item">Delete</a>
+                  </footer>
+                </div>
+              </div>
             </div>
         </div>
       </div>

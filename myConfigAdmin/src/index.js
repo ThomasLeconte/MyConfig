@@ -53,14 +53,6 @@ app.on('activate', () => {
   }
 });
 
-ipcMain.on('log-error', () => {
-  const options = {
-    type: 'info',
-    title: 'MyConfig - Erreur',
-    message: 'Erreur ! Veuillez rapporter ce bug au développeur de l\'application.'
-  }
-  dialog.showMessageBox(BrowserWindow.getFocusedWindow(), options);
-});
 
 ipcMain.on('openLogin', ()=>{
     // and load the index.html of the app.

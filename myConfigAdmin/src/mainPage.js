@@ -26,10 +26,10 @@ loginBtn.onclick = e => {
 
 const fetchBtn = document.getElementById('fetchItems')
 fetchBtn.onclick = e => {
-    getAllProducts('processors');
-    getAllProducts('ram');
+    //getAllProducts('processors');
+    //getAllProducts('ram');
     getAllProducts('storage');
-    getAllProducts('graphic-cards');
+    //getAllProducts('graphic-cards');
 };
 
 const itemCounter = document.getElementById('itemCounter');
@@ -193,11 +193,11 @@ async function scrapeProducts(url){
         //pour chaque produit du tableau de produits, on ajoute dans data le nom, prix, desc, lien image du produit
         for(const li of productRows){
             data.push({
-                name: grabFromRow(li, productName),
+                name: grabFromRow(li, productName).replace('"', ''),
                 desc: grabFromRow(li, productDesc),
-                price: grabFromRow(li, productPrice),
-                link: 'https://www.ldlc.com'+grabLinkFromRow(li, productLink),
-                image: grabImgFromRow(li, productImg)
+                price: grabFromRow(li, productPrice).replace('"', ''),
+                link: 'https://www.ldlc.com'+grabLinkFromRow(li, productLink).replace('"', ''),
+                image: grabImgFromRow(li, productImg).replace('"', '')
             })
             cpt = cpt+1;
         }

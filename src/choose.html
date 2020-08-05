@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>MyConfig - Choose</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="bulma-0.6.2/css/bulma.css">
+    <script defer src="choose.js"></script>
+    <script src="https://kit.fontawesome.com/50db597567.js" crossorigin="anonymous"></script>
+    <style>
+      html{
+        background: #1e2334;  /* fallback for old browsers */
+        height: 720px;
+      }
+
+      .table-container{
+          margin-top: 10px;
+      }
+
+      .chooseItem img{
+        float: left;
+      }
+
+      .column{
+        align-items: center;
+        justify-content: center;
+      }
+
+      .column h1{
+        font-size: 20px;
+        text-align: left;
+      }
+
+      .column p{
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="index.html">
+          <img src="img/banner.png" width="120" height="35">
+        </a>
+    
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+    
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="index.html">
+            <i class="fas fa-home" style="margin-right: 3px;"></i> Home
+          </a>
+    
+          <a class="navbar-item" href="userconfig.html">
+            <i class="fas fa-microchip" style="margin-right: 3px;"></i>Components
+          </a>
+
+          <a class="navbar-item" href="userconfig.html">
+            <i class="fas fa-user" style="margin-right: 3px;"></i>Your config
+          </a>
+    
+        </div>
+    
+        <div class="navbar-end">
+          <div class="navbar-item minimize-window" id="minimizeWindow">
+            <i class="far fa-window-minimize"></i>
+          </div>
+          <div class="navbar-item close-window" id="closeWindow">
+            <i class="fas fa-times"></i>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+
+    <div id="container">
+      <div class="columns">
+        <div class="column" style="margin-right: 1em;">
+          <h3 style="margin-bottom: 5px;">Choose one : </h3>
+          <ul>
+            <!--PRODUCT LIST-->
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+
+      // Get all "navbar-burger" elements
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+      // Check if there are any navbar burgers
+      if ($navbarBurgers.length > 0) {
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach( el => {
+          el.addEventListener('click', () => {
+
+            // Get the target from the "data-target" attribute
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
+
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+
+          });
+        });
+      }
+
+      });
+    </script>
+  </body>
+</html>

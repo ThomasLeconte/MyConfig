@@ -53,6 +53,14 @@ def getProductsByCategory(request, _category):
         response, safe=False
     )
 
+def getProductById(request, _productId):
+    queryset = component.objects.filter(comp_id=int(_productId))
+    this = queryset[0].returnList()
+
+    return JsonResponse(
+        this, safe=False
+    )
+
 
     
 

@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain, session, remote, ipcRenderer } = require('electron');
 const path = require('path');
 
 app.allowRendererProcessReuse = false;
@@ -11,6 +11,7 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
+    title: "Index",
     transparent: true,
     frame: false,
     width: 1280,
@@ -21,7 +22,6 @@ const createWindow = () => {
       nodeIntegration: true,
       enableRemoteModule: true,
     },
-    backgroundColor: '#00FFFFFF',
     icon: "src/img/icon.png"
   });
 
@@ -31,6 +31,37 @@ const createWindow = () => {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 };
+
+ipcMain.on('openChooseWindow', function(event, args) {
+    const chooseWindow = new BrowserWindow({
+      title: "Choose",
+      transparent: true,
+      frame: false,
+      width: 1280,
+      minWidth:1024,
+      height: 720,
+      resizable: false,
+      webPreferences:{
+        nodeIntegration: true,
+        enableRemoteModule: true,
+      },
+      icon: "src/img/icon.png"
+    });
+    chooseWindow.loadFile(path.join(__dirname, 'choose.html'));
+    chooseWindow.webContents.openDevTools();
+    chooseWindow.show();
+    
+});
+
+var chosenType = "";
+
+ipcMain.on('chooseType', function(event, args){
+    chosenType = args;
+});
+
+ipcMain.on('getChosenType', function(event, args){
+  event.sender.send('chooseType', chosenType);
+});
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

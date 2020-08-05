@@ -22,5 +22,6 @@ urlpatterns = [
     path('test/', views.home),
     path('checkCredentials/<_login>&<_password>', views.checkCredentials),
     path('components/<_categories>', views.getProductsNumberByCategory),
+    path('component/<_productId>', views.getProductById),
     path('getcomponents/<_category>', views.getProductsByCategory)
 ]

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>MyConfig - Admin</title>
+    <title>MyConfig - Index</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="bulma-0.6.2/css/bulma.css">
     <script defer src="mainPage.js"></script>
@@ -10,13 +10,25 @@
     <style>
       html{
         overflow: hidden;
-        background-color: #353b48;
-        border-radius: 5px;
-        border: 3px solid white;
-        height: 720px
+        background: #1e2334;  /* fallback for old browsers */
+        height: 720px;
+        box-shadow: inset 0 12px 24px rgba(0,0,0,0.25), 0 8px 8px rgba(0,0,0,0.22);
       }
+
       .card{
-          border-radius: 3px;
+        background: #ECE9E6;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        box-shadow: 0 12px 24px rgba(0,0,0,0.25), 0 8px 8px rgba(0,0,0,0.22);
+      }
+
+      .column h1{
+        font-size: 20px;
+        text-align: left;
+      }
+
+      .column p{
+        text-align: left;
       }
     </style>
   </head>
@@ -65,116 +77,118 @@
 
     <div id="container">
       <div class="columns">
-        <div class="column is-two-thirds">
-          <h3>Choose your components : </h3>
-          <div class="card">
-            <header class="card-header">
-              <p class="card-header-title">
-                Processor : 
-              </p>
-              <a href="#" class="card-header-icon" aria-label="more options">
-                <span class="icon">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </a>
-            </header>
-            <div class="card-content">
-              <div class="content">
-                <p class="chooseItem" id="chooseProcessor"><i class="far fa-plus-square"></i> Choose one ...</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <header class="card-header">
-              <p class="card-header-title">
-                RAM : 
-              </p>
-              <a href="#" class="card-header-icon" aria-label="more options">
-                <span class="icon">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </a>
-            </header>
-            <div class="card-content">
-              <div class="content">
-                <p class="chooseItem" id="chooseProcessor"><i class="far fa-plus-square"></i> Choose one ...</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <header class="card-header">
-              <p class="card-header-title">
-                Graphic card : 
-              </p>
-              <a href="#" class="card-header-icon" aria-label="more options">
-                <span class="icon">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </a>
-            </header>
-            <div class="card-content">
-              <div class="content">
-                <p class="chooseItem" id="chooseProcessor"><i class="far fa-plus-square"></i> Choose one ...</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <header class="card-header">
-              <p class="card-header-title">
-                Storage : 
-              </p>
-              <a href="#" class="card-header-icon" aria-label="more options">
-                <span class="icon">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </a>
-            </header>
-            <div class="card-content">
-              <div class="content">
-                <p class="chooseItem" id="chooseProcessor"><i class="far fa-plus-square"></i> Choose one ...</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
         <div class="column">
-          <div class="card">
-            <header class="card-header">
-              <p class="card-header-title">
-                Components
-              </p>
-              <a href="#" class="card-header-icon" aria-label="more options">
-                <span class="icon">
-                  <i class="fas fa-angle-down" aria-hidden="true"></i>
-                </span>
-              </a>
-            </header>
-            <div class="card-content">
-              <div class="content">
-                <div class="table-container">
-                  <table class="table">
-                    <tbody>
-                      <tr>
-                        <td>test</td>
-                      </tr>
-                      <tr>
-                        <td>test</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div class="totalPrice" style="display: flex;flex-direction: row;">
-                    <h4>Total : <span id="Price">0€</span></h4>
-                    
+          <h3 style="margin-bottom: 5px;">Choose your components : </h3>
+          <div class="columns">
+            <div class="column is-two-thirds" style="margin-right: 1.5em;">
+              <div class="card processor">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Processor : 
+                  </p>
+                  <a href="#" class="card-header-icon" aria-label="more options">
+                    <span class="icon">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                    <p class="chooseItem" id="chooseProcessor"><i class="far fa-plus-square"></i> Choose one ...</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card ram">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    RAM : 
+                  </p>
+                  <a href="#" class="card-header-icon" aria-label="more options">
+                    <span class="icon">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                    <p class="chooseItem" id="chooseRam"><i class="far fa-plus-square"></i> Choose one ...</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card graphic-card">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Graphic card : 
+                  </p>
+                  <a href="#" class="card-header-icon" aria-label="more options">
+                    <span class="icon">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                    <p class="chooseItem" id="chooseGraphicCard"><i class="far fa-plus-square"></i> Choose one ...</p>
+                  </div>
+                </div>
+              </div>
+              <div class="card storage">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Storage : 
+                  </p>
+                  <a href="#" class="card-header-icon" aria-label="more options">
+                    <span class="icon">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                    <p class="chooseItem" id="chooseStorage"><i class="far fa-plus-square"></i> Choose one ...</p>
                   </div>
                 </div>
               </div>
             </div>
-            <footer class="card-footer">
-              <a href="#" class="card-footer-item">Save</a>
-              <a href="#" class="card-footer-item">Edit</a>
-              <a href="#" class="card-footer-item">Delete</a>
-            </footer>
+            <div class="column">
+              <div class="card">
+                <header class="card-header">
+                  <p class="card-header-title">
+                    Components
+                  </p>
+                  <a href="#" class="card-header-icon" aria-label="more options">
+                    <span class="icon">
+                      <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                    <div class="table-container">
+                      <table class="table" style="background-color: transparent;">
+                        <tbody>
+                          <tr>
+                            <td>test</td>
+                          </tr>
+                          <tr>
+                            <td>test</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="totalPrice" style="display: flex;flex-direction: row;">
+                        <h4>Total : <span id="Price">0€</span></h4>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <footer class="card-footer">
+                  <a href="#" class="card-footer-item">Save</a>
+                  <a href="#" class="card-footer-item">Edit</a>
+                  <a href="#" class="card-footer-item">Delete</a>
+                </footer>
+              </div>
+            </div>
           </div>
         </div>
       </div>

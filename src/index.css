@@ -6,6 +6,7 @@ body {
 
 nav{
   -webkit-app-region: drag;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .navbar-item{
@@ -25,20 +26,23 @@ nav{
   margin: 3em;
 }
 
-h3{
-  color:white;
+#container{
+  margin: 5%;
+  margin-top: 1.5%;
+}
+
+#container h3{
+  color: #f9f9f9;
   font-size: 1em;
   text-transform: uppercase;
   letter-spacing: 2px;
-}
-
-#container{
-  margin: 5%;
-  margin-top: 2%;
+  margin-bottom: 10px;
 }
 
 .card{
-  margin-top: 1em;
+  border-radius: 10px;
+  margin-bottom: 1.5em;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.25), 0 8px 8px rgba(0,0,0,0.22);
 }
 
 .content{

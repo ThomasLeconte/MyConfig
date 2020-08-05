@@ -26,11 +26,11 @@ class component(models.Model):
     def returnList(self):
         return {
             "id": self.comp_id,
-            "title": json.loads(self.comp_info)['title'],
+            "title": self.__str__(),
             "desc": self.comp_desc,
-            "link": json.loads(self.comp_info)['link'],
-            "img": json.loads(self.comp_info)['img'],
-            "price": self.comp_price.replace('\xa0',''),
+            "link": self.getLink(),
+            "img": self.getImageLink(),
+            "price": self.getPrice(),
             "type": self.comp_type
         }
 

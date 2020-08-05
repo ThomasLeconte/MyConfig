@@ -47,9 +47,13 @@ function generateTable(){
     for(body in allTbody){
         var thisBody = allTbody[body];
         if(thisBody.classList.contains('processors')){
-            var products = JSON.parse(sessionStorage.getItem('processors'));
+            products = JSON.parse(sessionStorage.getItem('processors'));
         }else if(thisBody.classList.contains('graphic-cards')){
-            var products = JSON.parse(sessionStorage.getItem('graphic-cards'));
+            products = JSON.parse(sessionStorage.getItem('graphic-cards'));
+        }else if(thisBody.classList.contains('storage')){
+            products = JSON.parse(sessionStorage.getItem('storage'));
+        }else{
+            products = JSON.parse(sessionStorage.getItem('ram'));
         }
         
         for(product in products){
@@ -95,9 +99,18 @@ function getAllProducts(){
         sessionStorage.setItem('processors', JSON.stringify(processors));
     }
 
+    if(!sessionStorage.getItem('ram')){
+        const ram = getProductsByCategory(2);
+        sessionStorage.setItem('ram', JSON.stringify(ram));
+    }
+
+    if(!sessionStorage.getItem('storage')){
+        const storage = getProductsByCategory(3);
+        sessionStorage.setItem('storage', JSON.stringify(storage));
+    }
+
     if(!sessionStorage.getItem('graphic-cards')){
         const graphicCards = getProductsByCategory(4);
         sessionStorage.setItem('graphic-cards', JSON.stringify(graphicCards));
     }
-
 }
