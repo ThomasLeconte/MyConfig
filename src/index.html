@@ -80,7 +80,7 @@
         <div class="column">
           <h3 style="margin-bottom: 5px;">Choose your components : </h3>
           <div class="columns">
-            <div class="column is-two-thirds" style="margin-right: 1.5em;">
+            <div class="column is-two-thirds components" style="margin-right: 1.5em;">
               <div class="card processor">
                 <header class="card-header">
                   <p class="card-header-title">
@@ -162,21 +162,15 @@
                     </span>
                   </a>
                 </header>
-                <div class="card-content">
+                <div class="card-content configcard">
                   <div class="content">
-                    <div class="table-container">
+                    <div class="table-container" style="overflow-y:auto;">
                       <table class="table" style="background-color: transparent;">
-                        <tbody>
-                          <tr>
-                            <td>test</td>
-                          </tr>
-                          <tr>
-                            <td>test</td>
-                          </tr>
+                        <tbody id="configTable" style="height: 300px; overflow-y: scroll;">
                         </tbody>
                       </table>
                       <div class="totalPrice" style="display: flex;flex-direction: row;">
-                        <h4>Total : <span id="Price">0€</span></h4>
+                        <h4>Total : <span id="totalPrice">0</span>€</h4>
                         
                       </div>
                     </div>
@@ -184,7 +178,7 @@
                 </div>
                 <footer class="card-footer">
                   <a href="#" class="card-footer-item">Save</a>
-                  <a href="#" class="card-footer-item">Edit</a>
+                  <a href="#" class="card-footer-item">Share</a>
                   <a href="#" class="card-footer-item">Delete</a>
                 </footer>
               </div>

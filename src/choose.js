@@ -37,10 +37,10 @@ function showItems(){
             var products = getProductsByCategory(2);
             break;
         case "graphic-card":
-            var products = getProductsByCategory(3);
+            var products = getProductsByCategory(4);
             break;
         case "storage":
-            var products = getProductsByCategory(4);
+            var products = getProductsByCategory(3);
             break;
 
     }
